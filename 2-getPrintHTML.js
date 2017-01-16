@@ -7,17 +7,16 @@ function getAndPrintHTML () {
     path: '/http-examples/step2.html'
   };
 
-  var buffData = '';
-
   https.get(requestOptions, function(response) {
     response.setEncoding('utf8');
-    buffData += response;
+    var buffData = '';
     response.on('data', function (data) {
-      console.log(data);
+      buffData += data;
+      console.log(buffData);
     });
     response.on('end', function() {
     });
-  })
+  });
 }
 
 getAndPrintHTML();
